@@ -70,4 +70,14 @@ svg.selectAll(".dot")
     .attr("class", "dot") // Assign a class for styling
     .attr("cx", function(d, i) { return xScale(i) })
     .attr("cy", function(d) { return yScale(d.y) })
-    .attr("r", 5);
+    .attr("r", 5)
+    .on("mouseover", (e) => {
+      d3.select(event.target)
+        .transition()
+        .attr("r", 12);
+    })
+    .on("mouseout", (e) => {
+      d3.select(event.target)
+        .transition()
+        .attr("r", 5);
+    })
