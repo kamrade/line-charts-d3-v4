@@ -5,14 +5,15 @@ var gulp         = require('gulp');
 var connect      = require('gulp-connect');
 var browserify   = require('browserify');
 var vinylSource  = require('vinyl-source-stream');
-var uglify       = require('gulp-uglify');
+// var uglify       = require('gulp-uglify');
 var rename       = require('gulp-rename');
 var sass         = require('gulp-sass');
 var autoPrefixer = require('gulp-autoprefixer');
 var cleanCSS     = require('gulp-clean-css');
 var buffer       = require('vinyl-buffer');
 var pug          = require('gulp-pug');
-var pump         = require('pump');
+// var pump         = require('pump');
+var minify = require("gulp-babel-minify");
 
 gulp.task('pug', function buildHTML() {
   return gulp.src('src/view/index.pug')
@@ -37,15 +38,22 @@ gulp.task('js', function(){
 
 // minify concated js files and put it to dist
 gulp.task('compressjs', ['js'], function(cb) {
-  pump([
-    gulp.src('./dev/bundle.js'),
-    uglify(),
-    gulp.dest('./dist/js')
-  ], cb );
+  // pump([
+  //   gulp.src('./dev/js/bundle.js'),
+  //   uglify(),
+  //   gulp.dest('./dist/js')
+  // ], cb );
+  return gulp.src('./dev/js/bundle.js')
+    .pipe(minify({
+      mangle: {
+        keepClassName: true
+      }
+    }))
+    .pipe(gulp.dest('./dist/js'));
 });
 
 gulp.task('sass', function(){
-  return gulp.src('src/style/style.scss')
+  return gulp.src('src/style/main.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(autoPrefixer({
 			browsers: ['last 2 versions', '> 1%', 'IE 8'],
