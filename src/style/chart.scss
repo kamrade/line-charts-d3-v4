@@ -1,10 +1,49 @@
-.line {
+html, body {
+  background: #fafafc;
+}
+
+.chart {
+  border-radius: 1rem;
+  margin-top: 2rem;
+  background: linear-gradient(to top left, #6266EB, #E962CC);
+  box-shadow: 0 0 24px rgba(0,0,0,0.15);
+}
+
+.chart--line {
   fill: none;
-  stroke: #ffab00;
+  // stroke: #ffab00;
   stroke-width: 3;
 }
 
+.axis {
+  text {
+    fill: #fff;
+    user-select: none;
+  }
+  .tick line {
+    stroke: #fff;
+  }
+  .domain {
+    display: none;
+  }
+}
+
+.x.axis .tick line {
+  transform: translate(0px, -2px) scale(1, 0.4);
+}
+
+.y.axis .tick {
+  text {
+    transform: translate(-8px,-8px);
+  }
+  line {
+    stroke: #fff;
+    stroke-dasharray: 1,2;
+    opacity: .3;
+  }
+}
+
 .dot {
-  fill: #ffab00;
-  stroke: white;
+  fill: white;
+  cursor: pointer;
 }

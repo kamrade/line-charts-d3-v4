@@ -4665,11 +4665,45 @@ a.text-dark:focus, a.text-dark:hover {
 .invisible {
   visibility: hidden !important; }
 
-.line {
+html, body {
+  background: #fafafc; }
+
+.chart {
+  border-radius: 1rem;
+  margin-top: 2rem;
+  background: linear-gradient(to top left, #6266EB, #E962CC);
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.15); }
+
+.chart--line {
   fill: none;
-  stroke: #ffab00;
   stroke-width: 3; }
 
+.axis text {
+  fill: #fff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.axis .tick line {
+  stroke: #fff; }
+
+.axis .domain {
+  display: none; }
+
+.x.axis .tick line {
+  -webkit-transform: translate(0px, -2px) scale(1, 0.4);
+  transform: translate(0px, -2px) scale(1, 0.4); }
+
+.y.axis .tick text {
+  -webkit-transform: translate(-8px, -8px);
+  transform: translate(-8px, -8px); }
+
+.y.axis .tick line {
+  stroke: #fff;
+  stroke-dasharray: 1,2;
+  opacity: .3; }
+
 .dot {
-  fill: #ffab00;
-  stroke: white; }
+  fill: white;
+  cursor: pointer; }
